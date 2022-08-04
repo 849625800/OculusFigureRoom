@@ -1,5 +1,5 @@
 # OculusFigureRoom
- An Unity3d project Asset floder of this VrFigureRoom project.
+ An Unity3d project Asset floder of this VrFigureRoom project. It is my first VR program as well as my first Unity program. Therefore, it should be a lot of flaws in it. So... please bear with it LOL.
 # How to deploy this project on your local machine?
 -  Deploy an unity3d project and config your project to be able to run on oculus quest2 platform.
 -  Copy all the files under this project to your Access file.
