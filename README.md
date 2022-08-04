@@ -1,12 +1,12 @@
 # OculusFigureRoom
  An Unity3d project Asset floder of this VrFigureRoom project in which we can watch and play with different figures in a VR sence. Since I am a big fan of Genshin impect, all the models inside my project are from this game. And it is my first VR program as well as my first Unity program. Therefore, it should be a lot of flaws in it. So... please bear with it LOL.
 # How to deploy this project on your local machine?
--  Deploy an unity3d project and config your project to be able to run on oculus quest2 platform.
--  Copy all the files under this project to your Access file.
--  Import the Oculus Intergration from the Unity asset store.
-# How to run directly on you Oculus quest?
+-  Deploy an unity3d project and config your project to be able to run on oculus quest2 platform. 
+-  Copy all the files under this project as your Access floder.
+-  Import the Oculus Intergration from the Unity asset store. 
+# How to run directly on you Oculus quest2?
 -  Download the `FigureRoom.apk` file 
--  install the apk with the help of ADB toolkit.
+-  install the apk with the help of ADB toolkit after unlock the developer mode of your device.
 # How to add new Figures to the storage?
 - Save your 3d model to `.fbx` format using blender or other 3d modeling softwear.
 - put your `.fbx` model under `Resources/GenshinModels`.
