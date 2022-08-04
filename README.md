@@ -6,7 +6,7 @@
 -  Import the Oculus Intergration from the Unity asset store. 
 # How to run directly on you Oculus quest2?
 -  Download the `FigureRoom.apk` file 
--  install the apk with the help of ADB toolkit after unlock the developer mode of your device.
+-  install the apk with the help of ADB toolkit after unlock the developer mode of your Oculus Quest 2.
 # How to add new Figures to the storage?
 - Save your 3d model to `.fbx` format using blender or other 3d modeling softwear.
 - put your `.fbx` model under `Resources/GenshinModels`.
