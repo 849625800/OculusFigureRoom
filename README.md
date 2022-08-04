@@ -12,6 +12,7 @@
 - put your `.fbx` model under `Resources/GenshinModels`.
 - If your model is an `item` other than a humaniod bone, you should rename your model ending with `(道具)`， which helps the program to recognize your model as an Item.(For example, your `weapon.fbx` shoule be renamed to `weapon(道具).fbx`. It just a temporary solution, may be updated later.
 - A new model may come with a new icon. You can rename your icon `avatar` and put into the same path of the `.fbx` model.
+- Last but not least, Please build the game again after every time you add new figures. Because There is an editor script under the `Editor` floder named `ModelPathWrapper.cs` generating a path of figures which will be used for loading the models.
 # What can you do with this small demo?
 - It has a controller based locomotion system which enable you to walk around in this sence. You can move your character by using the joystick of your left controller and snap turn your head by pushing the joystick of your right controller left or right.
 - It also have a hand tracking based locomotion system. It is not resopnsive so not recommended. Right hand is the trigger of this locomotion system. When right hand thumbs up, and palm toward face, the locomotion system activated. If all fingers closed, disabled. For left hand, a sward finger pose would activate the movement. Palm dowm for moving forward, palm up for moving back,palm toward face for moving right and palm away from face for moving left.
