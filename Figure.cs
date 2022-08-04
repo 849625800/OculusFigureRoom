@@ -49,48 +49,73 @@ public class Figure : MonoBehaviour
         }
     }
 
-    void InitFigure() 
+    void InitFigure()
     {
-
         //set rigidbody
         gameObject.AddComponent<Rigidbody>();
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
 
-
-
+        //set layer (layer6 :interaction : not collide with player)
+        gameObject.layer = 6;
 
         //set shader, collider
         Shader toon = Resources.Load<Shader>("Shaders/MultiSteps");
 
+        var skinMesh = GetComponentInChildren<SkinnedMeshRenderer>();
 
-        SkinnedMeshRenderer skinMesh = GetComponentInChildren<SkinnedMeshRenderer>();
-
+        //if have skinned mesh renderer:
         if (skinMesh != null)
         {
-            // if has skinned mesh Renderer, add a box collider.
             foreach (Material m in skinMesh.materials)
             {
                 m.shader = toon;
             }
-            CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
-            cc.center = new Vector3(0, skinMesh.bounds.extents.y, 0);
-            cc.radius = 0.35f;
-            cc.height = skinMesh.bounds.size.y;
-
+            if (gameObject.tag == "Figure")
+            {
+                CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
+                cc.center = new Vector3(0, skinMesh.bounds.extents.y, 0);
+                cc.radius = 0.35f;
+                cc.height = skinMesh.bounds.size.y;
+            }
+            else if (gameObject.tag == "FigureItem")
+            {
+                MeshCollider mc = gameObject.AddComponent<MeshCollider>();
+                mc.sharedMesh = skinMesh.sharedMesh;
+                mc.convex = true;
+            }
         }
         else
         {
+            //else get the mesh renderer.
             MeshRenderer meshR = GetComponentInChildren<MeshRenderer>();
-            Mesh bodyMesh = GetComponentInChildren<MeshFilter>().mesh;
+
             foreach (Material m in meshR.materials)
             {
                 m.shader = toon;
             }
-            MeshCollider mc = gameObject.AddComponent<MeshCollider>();
-            mc.sharedMesh = bodyMesh;
-            mc.convex = true;
+            if (gameObject.tag == "Figure")
+            {
+                CapsuleCollider cc = gameObject.AddComponent<CapsuleCollider>();
+                cc.center = new Vector3(0, skinMesh.bounds.extents.y, 0);
+                cc.radius = 0.35f;
+                cc.height = skinMesh.bounds.size.y;
+            }
+            else if (gameObject.tag == "FigureItem")
+            {
+                MeshCollider mc = gameObject.AddComponent<MeshCollider>();
+                mc.sharedMesh = GetComponentInChildren<MeshFilter>().mesh;
+                mc.convex = true;
+            }
         }
 
+        var arm = gameObject.transform.Find("Armature");
+        if (arm != null) arm.rotation = Quaternion.Euler(0, 0, 0);
+
+        if (gameObject.tag == "Figure")
+        {
+            this.gameObject.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animation/FigureAction") as RuntimeAnimatorController;
+            rb.mass = 50;
+        }
 
 
         //mount grab transformers.
@@ -134,20 +159,6 @@ public class Figure : MonoBehaviour
         h.InjectOptionalPointableElement(g);
         h.InjectRigidbody(rb);
         h.InjectOptionalPhysicsGrabbable(pg);
-
-
-        //fix coordinate
-
-        //gameObject.transform.Find("Body").GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
-
-        if (gameObject.tag == "Figure")
-        {
-
-            this.gameObject.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animation/FigureAction") as RuntimeAnimatorController;
-            rb.mass = 50;
-            gameObject.transform.Find("Armature").GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
-
-        }
 
     }
 
