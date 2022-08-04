@@ -4,8 +4,8 @@
 -  Deploy an unity3d project and config your project to be able to run on oculus quest2 platform. 
 -  Copy all the files under this project as your Access floder.
 -  Import the Oculus Intergration from the Unity asset store. 
-# How to run directly on you Oculus quest2?
--  Download the `FigureRoom.apk` file 
+# How to run on you Oculus quest2?
+-  build the `.apk` file after the project deploied. (or download from here: https://drive.google.com/file/d/1yGhtpAjcLsx5V66j3s-KHJfIE6lSUFaB/view?usp=sharing) 
 -  install the apk with the help of ADB toolkit after unlock the developer mode of your Oculus Quest 2.
 # How to add new Figures to the storage?
 - Save your 3d model to `.fbx` format using blender or other 3d modeling softwear.
